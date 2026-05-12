@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+
+        <!-- Heading -->
+        <h1 class="section-title">
+            Register for Campaign
+        </h1>
+
+        <!-- Campaign Info -->
+        <div class="campaign-description">
+            <h2>{{ campaign.title }}</h2>
+            <p>{{ campaign.description }}</p>
+        </div>
+
+        <!-- Registration Card -->
+        <div class="campaign-details-card">
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div style="margin-bottom: 24px;">
+                    <label for="name" style="display:block; margin-bottom:6px;">
+                        Your Name <span style="color:#94a3b8;">(optional)</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-control"
+                        placeholder="Leave blank for anonymous registration"
+                        style="width:100%; padding:10px; border-radius:6px; border:1px solid #1e293b; background:#020617; color:#e5e7eb;"
+                    >
+                </div>
+
+                <!-- Buttons -->
+                <div class="center">
+                    <button type="submit" class="btn-primary btn-large">
+                        Confirm Registration
+                    </button>
+
+                    <a href="{% url 'campaign_detail' campaign.id %}"
+                       class="btn-primary btn-large"
+                       style="margin-left:12px; background:#334155; color:#e5e7eb;">
+                        Cancel
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}

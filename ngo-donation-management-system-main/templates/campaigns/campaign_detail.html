@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+
+        {% if campaign.image %}
+            <div class="campaign-image">
+                <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+            </div>
+        {% endif %}
+
+        <h1 class="campaign-title center">
+            {{ campaign.title }}
+        </h1>
+
+        <div class="campaign-details-card">
+
+            {% if campaign.is_active %}
+                <span class="status active">Active</span>
+            {% else %}
+                <span class="status closed">Closed</span>
+            {% endif %}
+
+            <table class="campaign-info-table">
+                <tbody>
+                    <tr>
+                        <th>Goal Amount</th>
+                        <td>₹ {{ campaign.goal_amount }}</td>
+                    </tr>
+
+                    {% if campaign.collected_amount is not None %}
+                        <tr>
+                            <th>Collected Amount</th>
+                            <td>₹ {{ campaign.collected_amount }}</td>
+                        </tr>
+                    {% endif %}
+
+                    <tr>
+                        <th>Start Date</th>
+                        <td>{{ campaign.start_date }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>End Date</th>
+                        <td>{{ campaign.end_date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="campaign-description">
+            <h2>Description</h2>
+            <p>{{ campaign.description }}</p>
+        </div>
+
+        <!-- ACTION SECTION -->
+        <div class="center">
+
+            {% if not campaign.is_active %}
+
+                <button class="btn-primary btn-large" disabled>
+                    Campaign Closed
+                </button>
+
+            {% else %}
+
+                {% if not user.is_authenticated %}
+
+                    <a href="{% url 'login' %}?next={% url 'campaign_detail' campaign.id %}"
+                       class="btn-primary btn-large">
+                        Login to Continue
+                    </a>
+
+                {% else %}
+
+                    {% if not is_registered %}
+
+                        <a href="{% url 'campaign_register' campaign.id %}"
+                           class="btn-primary btn-large">
+                            Register
+                        </a>
+
+                    {% else %}
+
+                        {% if donation and donation.payment_status == 'P' %}
+
+                            <span class="status pending">
+                                Donation Pending
+                            </span>
+
+                        {% else %}
+
+                            <a href="{% url 'donations:donate' campaign.id %}"
+                               class="btn-primary btn-large">
+                                Donate
+                            </a>
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}

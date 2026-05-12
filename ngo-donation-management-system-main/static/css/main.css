@@ -1,0 +1,522 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    color: #e5e7eb;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+main {
+    min-height: 70vh;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.site-header {
+    background-color: #020617;
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-logo a {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f8fafc;
+    text-decoration: none;
+}
+
+.main-nav a,
+.auth-links a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: #cbd5f5;
+    font-weight: 500;
+}
+
+.main-nav a:hover,
+.auth-links a:hover {
+    color: #22c55e;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+.btn-primary,
+.register-btn {
+    background-color: #22c55e;
+    color: #022c22;
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover,
+.register-btn:hover {
+    background-color: #16a34a;
+}
+
+.btn-large {
+    font-size: 1.05rem;
+    margin-top: 24px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+    position: relative;
+    height: 60vh;
+    min-height: 420px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-overlay h1 {
+    font-size: 2.6rem;
+    max-width: 800px;
+}
+
+.hero-overlay p {
+    font-size: 1.1rem;
+    margin-top: 14px;
+    max-width: 700px;
+}
+
+/* =====================================================
+   CAMPAIGN SLIDER (HOME PAGE — RESTORED)
+===================================================== */
+.campaign-slider {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.campaign-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.campaign-slider::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+.campaign-slide {
+    width: 320px;        
+    flex: 0 0 320px;     
+    background-color: #020617;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #f8fafc;
+    transition: transform 0.2s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+.campaign-slide:hover {
+    transform: translateY(-4px);
+}
+
+.campaign-slide img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    flex-shrink: 0;   
+}
+
+
+.campaign-slide-title {
+    display: block;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    height: 48px;              /* fixed title height */
+    line-height: 1.2;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   CAMPAIGN LIST PAGE
+===================================================== */
+.campaign-thumb {
+    width: 180px;
+    height: 140px;
+    background-color: #020617;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.campaign-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.view-campaign-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.view-campaign-link:hover {
+    text-decoration: underline;
+}
+
+.hr-divider {
+    height: 1px;
+    background-color: #334155;
+    border: none;
+    margin: 36px 0;
+}
+
+/* =====================================================
+   CAMPAIGN DETAIL PAGE
+===================================================== */
+.campaign-image {
+    max-width: 820px;
+    margin: 0 auto 32px auto;
+}
+
+.campaign-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.campaign-details,
+.campaign-details-card {
+    max-width: 820px;
+    margin: 0 auto 40px auto;
+    padding: 24px 28px;
+    background-color: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+}
+
+.campaign-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.campaign-info-table th {
+    text-align: left;
+    color: #94a3b8;
+    padding: 8px 0;
+    font-weight: 500;
+}
+
+.campaign-info-table td {
+    padding: 8px 0;
+    font-weight: 600;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+.status,
+.status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.status.active,
+.status-badge.status-active {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.status.closed,
+.status-badge.status-inactive {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #f8fafc;
+}
+
+.section-text,
+.campaign-description {
+    max-width: 820px;
+    margin: 0 auto 40px auto;
+    color: #cbd5f5;
+}
+
+.section-text h2,
+.campaign-description h2 {
+    margin-bottom: 12px;
+    color: #f8fafc;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.site-footer {
+    background-color: #020617;
+    color: #94a3b8;
+    margin-top: 80px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+/* ================= PROFILE PAGE ================= */
+
+.profile-page {
+    max-width: 1100px;
+    margin: 3rem auto;
+}
+
+/* ---- Profile Header ---- */
+.profile-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+}
+
+.profile-header h1 {
+    margin-bottom: 1.5rem;
+}
+
+.profile-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    row-gap: 0.75rem;
+}
+
+/* ---- Sections ---- */
+.profile-section {
+    margin-bottom: 3.5rem;
+}
+
+.profile-section h2 {
+    margin-bottom: 1.2rem;
+}
+
+/* ---- Tables ---- */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.035);
+    border-radius: 10px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: break-word;
+}
+
+.data-table thead th {
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 600;
+}
+
+.data-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* ---- Payment Status (STRONG SELECTORS) ---- */
+.data-table .payment-status {
+    font-weight: 600;
+}
+
+.data-table .payment-status.success {
+    color: #4ade80 !important; /* green */
+}
+
+.data-table .payment-status.failed {
+    color: #f87171 !important; /* red */
+}
+
+.data-table .payment-status.pending {
+    color: #facc15 !important; /* yellow */
+}
+
+/* ===============================
+   AUTH PAGES (LOGIN / SIGNUP)
+================================ */
+
+.auth-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(15, 23, 42, 0.95);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+.auth-card .form-group input {
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background-color: #020617;
+    color: #e5e7eb;
+}
+
+.auth-card .form-group input:focus {
+    outline: none;
+    border-color: #22c55e;
+}
+
+
+.help-text {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.error-text {
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: #ef4444;
+}
+
+.auth-card .btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem;
+    background-color: #22c55e;
+    color: #022c22;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.auth-card .btn-primary:hover {
+    background-color: #16a34a;
+}
+
+
+.auth-footer {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+

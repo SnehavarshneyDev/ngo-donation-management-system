@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home | NGO Platform{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+    <img src="{% static 'images/hero.jpg' %}" alt="NGO work image">
+
+    <div class="hero-overlay">
+        <h1>Enabling Lives. Empowering Communities.</h1>
+        <p>Support impactful campaigns that bring real change.</p>
+        <a href="/campaigns/" class="btn-primary btn-large">Support a Cause</a>
+    </div>
+</section>
+
+<!-- ================= CAMPAIGNS SLIDER ================= -->
+<section class="section">
+    <div class="container">
+
+        <h2 class="section-title">Our Campaigns</h2>
+
+        <div class="campaign-slider">
+            {% for campaign in campaigns %}
+                <a href="/campaigns/{{ campaign.id }}/" class="campaign-slide">
+                    {% if campaign.image %}
+                        <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+                    {% else %}
+                        <img src="{% static 'images/campaign_placeholder.jpg' %}" alt="Campaign">
+                    {% endif %}
+                    <span class="campaign-slide-title">
+                        {{ campaign.title }}
+                    </span>
+                </a>
+            {% empty %}
+                <p class="center">No active campaigns right now.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Who We Are</h2>
+
+        <p class="section-text">
+            We are a non-profit organization committed to creating sustainable impact
+            in education, healthcare, and livelihood development. Through transparent
+            campaigns and community-driven initiatives, we ensure every contribution
+            makes a real difference.
+        </p>
+    </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section">
+    <div class="container center">
+        <h2>Be a Part of the Change</h2>
+        <p>Your support helps us reach those who need it the most.</p>
+        <a href="/campaigns/" class="btn-primary btn-large">Donate Now</a>
+    </div>
+</section>
+
+{% endblock %}

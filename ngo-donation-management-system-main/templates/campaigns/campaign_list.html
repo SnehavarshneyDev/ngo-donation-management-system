@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Campaigns | NGO Platform{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+
+        <h1 class="section-title">Our Campaigns</h1>
+
+        {% if campaigns %}
+            {% for campaign in campaigns %}
+
+                <div class="campaign-list-item" style="display:flex; gap:24px; margin-bottom:36px; align-items:flex-start;">
+
+                    <!-- IMAGE -->
+                    <div class="campaign-thumb">
+                        {% if campaign.image %}
+                            <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+                        {% else %}
+                            <img src="{% static 'images/campaign_placeholder.jpg' %}" alt="Campaign">
+                        {% endif %}
+                    </div>
+
+                    <!-- DETAILS -->
+                    <div style="flex:1;">
+                        <h3 style="margin-bottom:8px;">
+                            {{ campaign.title }}
+                        </h3>
+
+                        <p style="color:#cbd5f5; margin-bottom:10px;">
+                            {{ campaign.description|truncatewords:25 }}
+                        </p>
+
+                        <p style="margin-bottom:6px;">
+                            <strong>Goal:</strong> ₹ {{ campaign.goal_amount }}
+                        </p>
+
+                        <p style="margin-bottom:12px;">
+                            <strong>Status:</strong>
+                            {% if campaign.is_active %}
+                                <span class="status active">Active</span>
+                            {% else %}
+                                <span class="status closed">Closed</span>
+                            {% endif %}
+                        </p>
+
+                        <a href="/campaigns/{{ campaign.id }}/" class="btn-primary" style="font-size:0.9rem;">
+                            View Campaign
+                        </a>
+                    </div>
+
+                </div>
+
+                <hr class="hr-divider">
+
+            {% endfor %}
+        {% else %}
+            <p class="center">No campaigns available at the moment.</p>
+        {% endif %}
+
+    </div>
+</main>
+{% endblock %}
